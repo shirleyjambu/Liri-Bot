@@ -7,10 +7,9 @@ const keys = require("./keys.js");
 const fs = require("fs");
 const moment = require("moment");
 
-var isProcessComplete = false;
 
 //Get user input using inquirer
-function getUserInput(){
+ function getUserInput(){
   inquirer.prompt([
     {
       type:"list",
@@ -59,7 +58,7 @@ function getUserInput(){
       }
     }
   ]).then(function(response){
-      isProcessComplete = false;
+      
       processCommand(response.choice,response.searchValue);
   })
   .catch(function(err){
@@ -68,21 +67,26 @@ function getUserInput(){
 }
 
 // Processes the search based on user choice and value
-function processCommand(choice,searchValue){
-  switch(choice){
+async function processCommand(choice,searchValue){
+   switch(choice){
     case('Check for Concert'):
-      checkForConcert(searchValue);
+      await checkForConcert(searchValue);
+      console.log("Details recorded in concert.txt file.");
       break;
     case('Spotify a Song'):
-      SpotifySong(searchValue);
+      await SpotifySong(searchValue);
+      console.log("Song details for '"+ searchValue +"' recorded in song.txt file.")
       break;
     case('Get Movie Details'):
-      getMovieDetails(searchValue);
+      await getMovieDetails(searchValue);
+      console.log("Movie Details are recorded in movie.txt file");
       break;
     case('Random'):
-      doRandom();
+      await doRandom();
       break;  
   }
+
+  await promptPlayAgain();
 }
 
 // Function to check for artist concert using BandsInTown API
@@ -91,8 +95,7 @@ const checkForConcert = artist =>{
 
   axios.get(queryUrl).then(function(response){
     recordConcert(response.data, artist);
-    console.log("Details recorded in concert.txt file.");
-    isProcessComplete = true;
+        
   });
 };
 
@@ -104,8 +107,8 @@ const getMovieDetails = movieName =>{
     .get(queryUrl)
     .then(({data}) => {
       recordMovie(data,movieName);
-      console.log("Movie Details are recorded in movie.txt file");
-      isProcessComplete = true;
+      
+      
     })
     .catch(err => {
       console.log("Error Occured");
@@ -120,8 +123,6 @@ const SpotifySong = song =>{
     .search({ type: 'track', query: song })
     .then(function(response) {
       recordSong(response,song);
-      console.log("Song details for '"+ song +"' recorded in song.txt file.")
-      isProcessComplete = true;
     })
     .catch(function(err) {
       console.log(err);
@@ -168,7 +169,7 @@ function recordSong(data,song){
         Song Name : ${tracks[i].name}
         Spotify Preview Link : ${tracks[i].preview_url}
         Album Name : ${tracks[i].album.name}
-        Release Date : ${tracks[i].album.release_date}
+        Release Date : ${moment(tracks[i].album.release_date,'YYYY-MM-DD').format('Do MMMM YYYY')}
         
         ---------------------------------------------------------
       `)
@@ -176,16 +177,16 @@ function recordSong(data,song){
 }
 
 // Function that writes concert details to file
-function recordConcert(data,artist){
+ function recordConcert(data,artist){
   writeToFile('concert.txt',`
     We found ${data.length} concert details for ${artist}.
     ---------------------------------------`);
-  
-   //When : ${moment(data[i].datetime,'DD/MM/YYYY HH:mm a')} 
+
   for(let i=0; i<data.length;i++){
+    
     writeToFile('concert.txt',`
       Venue : ${data[i].venue.name}, ${data[i].venue.city}, ${data[i].venue.country}
-      When : ${data[i].datetime}
+      When : ${moment(data[i].datetime,"YYYY-MM-DD [at] HH:mm:ss").format("Do MMMM YYYY [at] HH:mm a")}
       Status : ${data[i].offers[0].type}, ${data[i].offers[0].status}
       ---------------------------------------------------------
     `)
@@ -211,7 +212,7 @@ function promptPlayAgain(){
   inquirer.prompt([
     {
       type:'confirm',
-      message:'Do you want to get some other details? y/N',
+      message:'Do you want to get some other details?',
       default:'N',
       name:'repeat'
     }
@@ -219,11 +220,10 @@ function promptPlayAgain(){
     if(response.repeat){
       getUserInput();
     }else{
-      console.log('Enjoy! Have a nice day!')
+      console.log('Enjoy! Have a nice day!');
+      process.exit(0);
     }
   });
 }
+
 getUserInput();
-if(isProcessComplete){
-  promptPlayAgain();
-}
