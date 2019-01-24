@@ -1,0 +1,83 @@
+
+    We found 16 concert details for Maroon 5.
+    ---------------------------------------
+      Venue : Brisbane Entertainment Centre, Brisbane, Australia
+      When : 2019-02-19T19:00:50
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Qudos Bank Arena, Sydney, Australia
+      When : 2019-02-21T19:00:51
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Rod Laver Arena, Melbourne, Australia
+      When : 2019-02-22T19:00:13
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Tokyo Dome, Tokyo, Japan
+      When : 2019-02-25T19:00:23
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Gocheok Sky Dome, Seoul, South Korea
+      When : 2019-02-27T19:00:33
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : TBA, Kaohsiung City, Taiwan
+      When : 2019-03-01T19:00:36
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : TBA, Macau, Macau
+      When : 2019-03-03T19:00:44
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : SM Mall Of Asia, Manila, Philippines
+      When : 2019-03-05T19:00:07
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : NATIONAL STADIUM, Singapore, Singapore
+      When : 2019-03-07T19:00:41
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Mollenpark, Aalborg, Denmark
+      When : 2019-06-01T19:00:44
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : CHALLENGER HALL, Bangkok, Thailand
+      When : 2019-03-09T19:00:34
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Lanxess Arena, Cologne, Germany
+      When : 2019-06-03T19:00:11
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : O2 ARENA, Prague, Czech Republic
+      When : 2019-06-05T19:00:34
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Tauron Arena, Kraków, Poland
+      When : 2019-06-06T19:00:29
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : AccorHotels Arena, Paris, France
+      When : 2019-06-11T19:00:06
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
+      Venue : Ziggo Dome, Amsterdam, Netherlands
+      When : 2019-06-10T19:00:09
+      Status : Tickets, available
+      ---------------------------------------------------------
+    
