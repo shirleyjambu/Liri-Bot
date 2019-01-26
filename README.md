@@ -17,12 +17,12 @@ When the program is executed, the user is presented with options to choose using
 
 Based on the option chosen, the user is again prompted to enter the name of an artist, a song or a movie name based on his choice. 
 
-The program then makes an api call to BandsInTown, Spotify and OmDB to get the appropriate details
+The program then makes an api call to BandsInTown, Spotify and OmDB respectively to get the appropriate details
 and would log the details in .txt files.
 
 When 'Random' is chosen as an option, the program would read the file 'random.txt' and perform
 the command specified in the file.
 
-#PENDING    
-moment not working
-Link this to portfolio
+Have Fun !
+
+
