@@ -68,25 +68,29 @@ const moment = require("moment");
 
 // Processes the search based on user choice and value
 async function processCommand(choice,searchValue){
+  
    switch(choice){
     case('Check for Concert'):
       await checkForConcert(searchValue);
       console.log("Details recorded in concert.txt file.");
+      promptPlayAgain();
       break;
     case('Spotify a Song'):
       await SpotifySong(searchValue);
       console.log("Song details for '"+ searchValue +"' recorded in song.txt file.")
+      promptPlayAgain();
       break;
     case('Get Movie Details'):
       await getMovieDetails(searchValue);
       console.log("Movie Details are recorded in movie.txt file");
+      promptPlayAgain();
       break;
     case('Random'):
       await doRandom();
       break;  
   }
 
-  await promptPlayAgain();
+  
 }
 
 // Function to check for artist concert using BandsInTown API
@@ -195,6 +199,7 @@ function recordSong(data,song){
 
 //Function to get command from text file
 function doRandom(){
+  
   let fileName = "random.txt";
   fs.readFile(fileName, "utf8", function(error, data) {
     if (error) {
@@ -203,8 +208,7 @@ function doRandom(){
     
     var dataArr = data.split(",");
     processCommand(dataArr[0],dataArr[1]);
-  
-  });
+    });
 };
 
 //Function to prompt user to play again
